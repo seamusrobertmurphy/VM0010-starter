@@ -1,7 +1,5 @@
 # VM0010 Starter Script
 
-
-<script src="R/VM0010-starter_files/libs/kePrint/kePrint.js"></script>
 <link href="R/VM0010-starter_files/libs/lightable/lightable.css" rel="stylesheet" />
 
 - [1. Process data](#1-process-data)
