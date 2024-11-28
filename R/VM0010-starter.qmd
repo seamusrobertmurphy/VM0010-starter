@@ -335,7 +335,7 @@ At this stage, It is advised to assign gross percentages of volume extracted to 
 Wood product classes may include `sawnwood`, `panels`, `roundwood`, `paper`, etc.
 In addition, the amount of carbon stored in wood products that would decay within three years after harvest are assumed to be emitted at the time of harvest
 
-#### EQ9: HWP carbon loss ^year-0^ 
+#### EQ9: HWP carbon loss ^year-0^
 
 Equation 9 calculates mean carbon immediately emmited from harvested volumes at the time of harvest, as follows:
 
@@ -381,9 +381,7 @@ $$
 
 where $FC_{HARVEST}$ derives volume of fuel consumed by harvest operators per m^3^ of extracted log (kL/m^-3^) and $EF_{FUEL}$ represents a fuel emission factor (tCO2~e~ kL^-1^).
 These input variables must be derived through the common practice pathway method.
-The following sources of information are permitted for this:
-• Data from other forest management companies in the region; or
-• Data from peer reviewed literature (or published by government agency)
+The following sources of information are permitted for this: • Data from other forest management companies in the region; or • Data from peer reviewed literature (or published by government agency)
 
 #### EQ14: Hauling fuel emissions
 
