@@ -1,32 +1,18 @@
 ---
-<<<<<<< HEAD
 title: "VM0010 Starter Script"
 format: 
   gfm:
-=======
-title: "[**VM0010**](https://verra.org/wp-content/uploads/2024/10/VM0010_IFM_LtPF_v1.4_Clean_10282024.pdf) Starter Script & Equations"
-format: 
-  gfm:
-    preview-mode: raw
->>>>>>> 6814d8a11f8bafbae11b0ea7c90bf446478c2b72
     toc: true
     toc-location: right
     toc-title: "**Contents**"
     toc-depth: 5
     toc-expand: 4
-<<<<<<< HEAD
     theme: [minimal, ./R/styles.scss]
 highlight-style: github
 bibliography: ./R/references.bib
 df-print: kable
 keep-md: true
 prefer-html: true
-=======
-    theme: [minimal, styles.scss]
-keep-md: true
-highlight-style: github
-bibliography: references.bib
->>>>>>> 6814d8a11f8bafbae11b0ea7c90bf446478c2b72
 ---
 
 
@@ -40,11 +26,7 @@ bibliography: references.bib
 
 # 1. Process data
 
-<<<<<<< HEAD
 The following workflow provides a starter script for quantifying greenhouse gas emissions reduction of projects designed under the VCS Methodology [VM0010](https://verra.org/wp-content/uploads/2024/10/VM0010_IFM_LtPF_v1.4_Clean_10282024.pdf).
-=======
-The following workflow provides a starter script for quantifying greenhouse gas emissions reduction of projects designed under the VCS Methodology `VM0010`.
->>>>>>> 6814d8a11f8bafbae11b0ea7c90bf446478c2b72
 
 #### Import dummy data {#sec-1.1}
 
@@ -54,7 +36,6 @@ The following workflow provides a starter script for quantifying greenhouse gas 
 
 ```{.r .cell-code}
 set.seed(333)
-<<<<<<< HEAD
 dataset_raw <- read_excel("./R/assets/dataset_raw.xlsx")
 write.csv(dataset_raw, "./R/assets/dataset_tidy.csv", row.names = FALSE)
 dataset_tidy <- read.csv("./R/assets/dataset_tidy.csv")
@@ -149,30 +130,6 @@ dataset_tidy |> kbl() |> kable_styling()
 </table>
 
 `````
-=======
-dataset_raw <- read_excel("./assets/dataset_raw.xlsx")
-write.csv(dataset_raw, "./assets/dataset_tidy.csv", row.names = FALSE)
-dataset_tidy <- read.csv("./assets/dataset_tidy.csv")
-dataset_tidy  # |> kbl() |> kable_styling()
-```
-
-::: {.cell-output .cell-output-stdout}
-
-```
-   Stratum...i. Plot..sp. Species..j. Tree..l. Volume..V_.l.j.I.sp..
-1             1         1         Sp1       t1                  3.30
-2             1         1         Sp1       t2                  4.80
-3             1         1         Sp1       t3                  4.08
-4             1         2         Sp4       t1                  1.50
-5             1         2         Sp4       t2                  1.68
-6             2         1         Sp1       t1                  1.38
-7             2         1         Sp2       t2                  3.24
-8             2         1         Sp3       t3                  3.72
-9             2         1         sp4       t4                  2.94
-10            2         1         Sp5       t5                  3.36
-```
-
->>>>>>> 6814d8a11f8bafbae11b0ea7c90bf446478c2b72
 
 :::
 :::
@@ -216,7 +173,6 @@ saveHTML(dataMaid::makeDataReport(
 
 :::
 
-<<<<<<< HEAD
 ::: {.cell-output-display}
 
 |Species..j. |  n|
@@ -227,20 +183,6 @@ saveHTML(dataMaid::makeDataReport(
 |Sp4         |  2|
 |Sp5         |  1|
 |sp4         |  1|
-=======
-::: {.cell-output .cell-output-stdout}
-
-```
-  Species..j. n
-1         Sp1 4
-2         Sp2 1
-3         Sp3 1
-4         Sp4 2
-5         Sp5 1
-6         sp4 1
-```
-
->>>>>>> 6814d8a11f8bafbae11b0ea7c90bf446478c2b72
 
 :::
 :::
@@ -286,7 +228,6 @@ dataset_tidy = dataset_tidy %>%
   group_by(stratum_i) %>%
   mutate(a_I_m2 = sum(a_sp_m2), a_I_ha = sum(a_sp)) 
 
-<<<<<<< HEAD
 write.csv(dataset_tidy, "./R/assets/dataset_tidy.csv", row.names = FALSE)
 dataset_tidy |> kbl() |> kable_styling()
 ```
@@ -456,32 +397,6 @@ dataset_tidy |> kbl() |> kable_styling()
 </table>
 
 `````
-=======
-write.csv(dataset_tidy, "dataset_tidy.csv", row.names = FALSE)
-dataset_tidy # |> kbl() |> kable_styling()
-```
-
-::: {.cell-output .cell-output-stdout}
-
-```
-# A tibble: 10 × 12
-# Groups:   stratum_i [2]
-   stratum_i plot_sp species_j tree_l volume bcef_r    cf     d  a_sp a_sp_m2
-   <fct>       <int> <fct>     <chr>   <dbl>  <dbl> <dbl> <dbl> <dbl>   <dbl>
- 1 1               1 Sp1       t1       3.3     0.7   0.5   0.5   0.1    1000
- 2 1               1 Sp1       t2       4.8     0.7   0.5   0.5   0.1    1000
- 3 1               1 Sp1       t3       4.08    0.7   0.5   0.5   0.1    1000
- 4 1               2 Sp4       t1       1.5     0.7   0.5   0.5   0.1    1000
- 5 1               2 Sp4       t2       1.68    0.7   0.5   0.5   0.1    1000
- 6 2               1 Sp1       t1       1.38    0.7   0.5   0.5   0.1    1000
- 7 2               1 Sp2       t2       3.24    0.7   0.5   0.5   0.1    1000
- 8 2               1 Sp3       t3       3.72    0.7   0.5   0.5   0.1    1000
- 9 2               1 Sp4       t4       2.94    0.7   0.5   0.5   0.1    1000
-10 2               1 Sp5       t5       3.36    0.7   0.5   0.5   0.1    1000
-# ℹ 2 more variables: a_I_m2 <dbl>, a_I_ha <dbl>
-```
-
->>>>>>> 6814d8a11f8bafbae11b0ea7c90bf446478c2b72
 
 :::
 :::
@@ -515,7 +430,6 @@ data.table::setDT(dataset_tidy)[, .(
   vji_sp_m3 = sum(volume)
   ),
   by = .(stratum_i, plot_sp, species_j)
-<<<<<<< HEAD
 ] |> kbl() |> kable_styling()
 ```
 
@@ -578,25 +492,6 @@ data.table::setDT(dataset_tidy)[, .(
 </table>
 
 `````
-=======
-]  # |> kbl() |> kable_styling()
-```
-
-::: {.cell-output .cell-output-stdout}
-
-```
-   stratum_i plot_sp species_j vji_sp_m3
-      <fctr>   <int>    <fctr>     <num>
-1:         1       1       Sp1     12.18
-2:         1       2       Sp4      3.18
-3:         2       1       Sp1      1.38
-4:         2       1       Sp2      3.24
-5:         2       1       Sp3      3.72
-6:         2       1       Sp4      2.94
-7:         2       1       Sp5      3.36
-```
-
->>>>>>> 6814d8a11f8bafbae11b0ea7c90bf446478c2b72
 
 :::
 :::
@@ -626,7 +521,6 @@ data.table::setDT(dataset_tidy)[, .(
   vji_ha_m3
   ),
   by = .(stratum_i, species_j)
-<<<<<<< HEAD
 ] |> kbl() |> kable_styling()
 ```
 
@@ -707,28 +601,6 @@ data.table::setDT(dataset_tidy)[, .(
 </table>
 
 `````
-=======
-]  # |> kbl() |> kable_styling()
-```
-
-::: {.cell-output .cell-output-stdout}
-
-```
-    stratum_i species_j vji_sp_m3 vji_ha_m3
-       <fctr>    <fctr>     <num>     <num>
- 1:         1       Sp1     12.18     121.8
- 2:         1       Sp1     12.18     121.8
- 3:         1       Sp1     12.18     121.8
- 4:         1       Sp4      3.18      31.8
- 5:         1       Sp4      3.18      31.8
- 6:         2       Sp1      1.38      13.8
- 7:         2       Sp2      3.24      32.4
- 8:         2       Sp3      3.72      37.2
- 9:         2       Sp4      2.94      29.4
-10:         2       Sp5      3.36      33.6
-```
-
->>>>>>> 6814d8a11f8bafbae11b0ea7c90bf446478c2b72
 
 :::
 :::
@@ -765,7 +637,6 @@ data.table::setDT(dataset_tidy)[, .(
   chb_ha_tC
   ),
   by = .(stratum_i, species_j)
-<<<<<<< HEAD
 ] |> kbl() |> kable_styling()
 ```
 
@@ -857,28 +728,6 @@ data.table::setDT(dataset_tidy)[, .(
 </table>
 
 `````
-=======
-] # |> kbl() |> kable_styling()
-```
-
-::: {.cell-output .cell-output-stdout}
-
-```
-    stratum_i species_j vji_sp_m3 vji_ha_m3 chb_ha_tC
-       <fctr>    <fctr>     <num>     <num>     <num>
- 1:         1       Sp1     12.18     121.8     42.63
- 2:         1       Sp1     12.18     121.8     42.63
- 3:         1       Sp1     12.18     121.8     42.63
- 4:         1       Sp4      3.18      31.8     11.13
- 5:         1       Sp4      3.18      31.8     11.13
- 6:         2       Sp1      1.38      13.8      4.83
- 7:         2       Sp2      3.24      32.4     11.34
- 8:         2       Sp3      3.72      37.2     13.02
- 9:         2       Sp4      2.94      29.4     10.29
-10:         2       Sp5      3.36      33.6     11.76
-```
-
->>>>>>> 6814d8a11f8bafbae11b0ea7c90bf446478c2b72
 
 :::
 :::
@@ -909,7 +758,6 @@ data.table::setDT(dataset_tidy)[, .(
   cex_ha_tC
   ),
   by = .(stratum_i, species_j)
-<<<<<<< HEAD
 ] |> kbl() |> kable_styling()
 ```
 
@@ -1012,28 +860,6 @@ data.table::setDT(dataset_tidy)[, .(
 </table>
 
 `````
-=======
-] # |> kbl() |> kable_styling()
-```
-
-::: {.cell-output .cell-output-stdout}
-
-```
-    stratum_i species_j vji_sp_m3 vji_ha_m3 chb_ha_tC cex_ha_tC
-       <fctr>    <fctr>     <num>     <num>     <num>     <num>
- 1:         1       Sp1     12.18     121.8     42.63     30.45
- 2:         1       Sp1     12.18     121.8     42.63     30.45
- 3:         1       Sp1     12.18     121.8     42.63     30.45
- 4:         1       Sp4      3.18      31.8     11.13      7.95
- 5:         1       Sp4      3.18      31.8     11.13      7.95
- 6:         2       Sp1      1.38      13.8      4.83      3.45
- 7:         2       Sp2      3.24      32.4     11.34      8.10
- 8:         2       Sp3      3.72      37.2     13.02      9.30
- 9:         2       Sp4      2.94      29.4     10.29      7.35
-10:         2       Sp5      3.36      33.6     11.76      8.40
-```
-
->>>>>>> 6814d8a11f8bafbae11b0ea7c90bf446478c2b72
 
 :::
 :::
@@ -1073,7 +899,6 @@ data.table::setDT(dataset_tidy)[, .(
   c_rsd
   ),
   by = .(stratum_i, species_j)
-<<<<<<< HEAD
 ] |> kbl() |> kable_styling()
 ```
 
@@ -1176,28 +1001,6 @@ data.table::setDT(dataset_tidy)[, .(
 </table>
 
 `````
-=======
-] # |> kbl() |> kable_styling()
-```
-
-::: {.cell-output .cell-output-stdout}
-
-```
-    stratum_i species_j vji_sp_m3 vji_ha_m3 chb_ha_tC  c_rsd
-       <fctr>    <fctr>     <num>     <num>     <num>  <num>
- 1:         1       Sp1     12.18     121.8     42.63 52.983
- 2:         1       Sp1     12.18     121.8     42.63 52.983
- 3:         1       Sp1     12.18     121.8     42.63 52.983
- 4:         1       Sp4      3.18      31.8     11.13 13.833
- 5:         1       Sp4      3.18      31.8     11.13 13.833
- 6:         2       Sp1      1.38      13.8      4.83  6.003
- 7:         2       Sp2      3.24      32.4     11.34 14.094
- 8:         2       Sp3      3.72      37.2     13.02 16.182
- 9:         2       Sp4      2.94      29.4     10.29 12.789
-10:         2       Sp5      3.36      33.6     11.76 14.616
-```
-
->>>>>>> 6814d8a11f8bafbae11b0ea7c90bf446478c2b72
 
 :::
 :::
@@ -1220,11 +1023,7 @@ At this stage, It is advised to assign gross percentages of volume extracted to 
 Wood product classes may include `sawnwood`, `panels`, `roundwood`, `paper`, etc.
 In addition, the amount of carbon stored in wood products that would decay within three years after harvest are assumed to be emitted at the time of harvest
 
-<<<<<<< HEAD
 #### EQ9: HWP carbon loss ^year-0^
-=======
-#### EQ9: HWP carbon loss ^year-0^ 
->>>>>>> 6814d8a11f8bafbae11b0ea7c90bf446478c2b72
 
 Equation 9 calculates mean carbon immediately emmited from harvested volumes at the time of harvest, as follows:
 
@@ -1253,11 +1052,7 @@ $$
 
 where $OF_k$ is defined in VM0010 documentation as the fraction of biomass carbon per product type *`k`* that is emitted to atmosphere in 100 years following timber harvest:
 
-<<<<<<< HEAD
 ![](R/assets/OF-VM0010.png){fig-align="center" width="500"}
-=======
-![](assets/OF-VM0010.png){fig-align="center" width="500"}
->>>>>>> 6814d8a11f8bafbae11b0ea7c90bf446478c2b72
 
 #### EQ12: Fuel emissions
 
@@ -1274,13 +1069,7 @@ $$
 
 where $FC_{HARVEST}$ derives volume of fuel consumed by harvest operators per m^3^ of extracted log (kL/m^-3^) and $EF_{FUEL}$ represents a fuel emission factor (tCO2~e~ kL^-1^).
 These input variables must be derived through the common practice pathway method.
-<<<<<<< HEAD
 The following sources of information are permitted for this: • Data from other forest management companies in the region; or • Data from peer reviewed literature (or published by government agency)
-=======
-The following sources of information are permitted for this:
-• Data from other forest management companies in the region; or
-• Data from peer reviewed literature (or published by government agency)
->>>>>>> 6814d8a11f8bafbae11b0ea7c90bf446478c2b72
 
 #### EQ14: Hauling fuel emissions
 
@@ -1304,7 +1093,6 @@ N_{TRUCKS-TRANSPORT} = \frac{\sum_{j,i} V_{EX,j,i|BSL} \times A_i}{CAP_{TRUCK}}$
 ```{.r .cell-code}
 htmltools::includeHTML("dataMaid_dataset_tidy.html")
 ```
-<<<<<<< HEAD
 :::
 
 
@@ -1312,18 +1100,6 @@ htmltools::includeHTML("dataMaid_dataset_tidy.html")
 ![](R/assets/dataMaid_dataset_tidy.png)
 
 
-=======
-
-::: {.cell-output .cell-output-error}
-
-```
-Error in file(con, "r"): cannot open the connection
-```
-
-
-:::
-:::
->>>>>>> 6814d8a11f8bafbae11b0ea7c90bf446478c2b72
 
 ::: {.cell}
 
