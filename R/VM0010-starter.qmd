@@ -74,7 +74,7 @@ set.seed(333)
 dataset_raw <- read_excel("./assets/dataset_raw.xlsx")
 write.csv(dataset_raw, "./assets/dataset_tidy.csv", row.names = FALSE)
 dataset_tidy <- read.csv("./assets/dataset_tidy.csv")
-dataset_tidy  |> kbl() |> kable_styling()
+dataset_tidy  # |> kbl() |> kable_styling()
 ```
 
 #### Review dummy data {#sec-1.2}
@@ -152,7 +152,7 @@ dataset_tidy = dataset_tidy %>%
   mutate(a_I_m2 = sum(a_sp_m2), a_I_ha = sum(a_sp)) 
 
 write.csv(dataset_tidy, "dataset_tidy.csv", row.names = FALSE)
-dataset_tidy |> kbl() |> kable_styling()
+dataset_tidy # |> kbl() |> kable_styling()
 ```
 
 # 2. Compute Equations
@@ -184,7 +184,7 @@ data.table::setDT(dataset_tidy)[, .(
   vji_sp_m3 = sum(volume)
   ),
   by = .(stratum_i, plot_sp, species_j)
-]  |> kbl() |> kable_styling()
+]  # |> kbl() |> kable_styling()
 ```
 
 #### EQ2: Strata biomass
@@ -212,7 +212,7 @@ data.table::setDT(dataset_tidy)[, .(
   vji_ha_m3
   ),
   by = .(stratum_i, species_j)
-]  |> kbl() |> kable_styling()
+]  # |> kbl() |> kable_styling()
 ```
 
 #### EQ3: Harvest carbon
@@ -248,7 +248,7 @@ data.table::setDT(dataset_tidy)[, .(
   chb_ha_tC
   ),
   by = .(stratum_i, species_j)
-] |> kbl() |> kable_styling()
+] # |> kbl() |> kable_styling()
 ```
 
 #### EQ4: Extracted carbon
@@ -277,7 +277,7 @@ data.table::setDT(dataset_tidy)[, .(
   cex_ha_tC
   ),
   by = .(stratum_i, species_j)
-] |> kbl() |> kable_styling()
+] # |> kbl() |> kable_styling()
 ```
 
 #### EQ5: Slash carbon
@@ -315,7 +315,7 @@ data.table::setDT(dataset_tidy)[, .(
   c_rsd
   ),
   by = .(stratum_i, species_j)
-] |> kbl() |> kable_styling()
+] # |> kbl() |> kable_styling()
 ```
 
 #### EQ7: Undamaged carbon

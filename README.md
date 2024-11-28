@@ -1,4 +1,42 @@
-# [**VM0010**](https://verra.org/wp-content/uploads/2024/10/VM0010_IFM_LtPF_v1.4_Clean_10282024.pdf) Starter Script
+---
+title: "[**VM0010**](https://verra.org/wp-content/uploads/2024/10/VM0010_IFM_LtPF_v1.4_Clean_10282024.pdf) Starter Script & Equations"
+format:
+  html:
+    toc: true
+    toc-location: right
+    toc-title: "**Contents**"
+    toc-depth: 5
+    toc-expand: 4
+    theme: [minimal, styles.scss]
+keep-md: true
+highlight-style: github
+bibliography: references.bib
+---
+
+
+
+
+::: {.cell}
+<style type="text/css">
+div.column {
+    display: inline-block;
+    vertical-align: top;
+    width: 50%;
+}
+
+#TOC::before {
+  content: "";
+  display: block;
+  height:200px;
+  width: 200px;
+  background-size: contain;
+  background-position: 50% 50%;
+  padding-top: 80px !important;
+  background-repeat: no-repeat;
+}
+</style>
+:::
+
 
 
 # 1. Process data
@@ -16,97 +54,25 @@ set.seed(333)
 dataset_raw <- read_excel("./assets/dataset_raw.xlsx")
 write.csv(dataset_raw, "./assets/dataset_tidy.csv", row.names = FALSE)
 dataset_tidy <- read.csv("./assets/dataset_tidy.csv")
-dataset_tidy  |> kbl() |> kable_styling()
+dataset_tidy  # |> kbl() |> kable_styling()
 ```
 
-::: {.cell-output-display}
+::: {.cell-output .cell-output-stdout}
 
-`````{=html}
-<table class="table" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:right;"> Stratum...i. </th>
-   <th style="text-align:right;"> Plot..sp. </th>
-   <th style="text-align:left;"> Species..j. </th>
-   <th style="text-align:left;"> Tree..l. </th>
-   <th style="text-align:right;"> Volume..V_.l.j.I.sp.. </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:left;"> t1 </td>
-   <td style="text-align:right;"> 3.30 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:left;"> t2 </td>
-   <td style="text-align:right;"> 4.80 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:left;"> t3 </td>
-   <td style="text-align:right;"> 4.08 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:left;"> t1 </td>
-   <td style="text-align:right;"> 1.50 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:left;"> t2 </td>
-   <td style="text-align:right;"> 1.68 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:left;"> t1 </td>
-   <td style="text-align:right;"> 1.38 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp2 </td>
-   <td style="text-align:left;"> t2 </td>
-   <td style="text-align:right;"> 3.24 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp3 </td>
-   <td style="text-align:left;"> t3 </td>
-   <td style="text-align:right;"> 3.72 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> sp4 </td>
-   <td style="text-align:left;"> t4 </td>
-   <td style="text-align:right;"> 2.94 </td>
-  </tr>
-  <tr>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp5 </td>
-   <td style="text-align:left;"> t5 </td>
-   <td style="text-align:right;"> 3.36 </td>
-  </tr>
-</tbody>
-</table>
+```
+   Stratum...i. Plot..sp. Species..j. Tree..l. Volume..V_.l.j.I.sp..
+1             1         1         Sp1       t1                  3.30
+2             1         1         Sp1       t2                  4.80
+3             1         1         Sp1       t3                  4.08
+4             1         2         Sp4       t1                  1.50
+5             1         2         Sp4       t2                  1.68
+6             2         1         Sp1       t1                  1.38
+7             2         1         Sp2       t2                  3.24
+8             2         1         Sp3       t3                  3.72
+9             2         1         sp4       t4                  2.94
+10            2         1         Sp5       t5                  3.36
+```
 
-`````
 
 :::
 :::
@@ -208,174 +174,29 @@ dataset_tidy = dataset_tidy %>%
   mutate(a_I_m2 = sum(a_sp_m2), a_I_ha = sum(a_sp)) 
 
 write.csv(dataset_tidy, "dataset_tidy.csv", row.names = FALSE)
-dataset_tidy |> kbl() |> kable_styling()
+dataset_tidy # |> kbl() |> kable_styling()
 ```
 
-::: {.cell-output-display}
+::: {.cell-output .cell-output-stdout}
 
-`````{=html}
-<table class="table" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> stratum_i </th>
-   <th style="text-align:right;"> plot_sp </th>
-   <th style="text-align:left;"> species_j </th>
-   <th style="text-align:left;"> tree_l </th>
-   <th style="text-align:right;"> volume </th>
-   <th style="text-align:right;"> bcef_r </th>
-   <th style="text-align:right;"> cf </th>
-   <th style="text-align:right;"> d </th>
-   <th style="text-align:right;"> a_sp </th>
-   <th style="text-align:right;"> a_sp_m2 </th>
-   <th style="text-align:right;"> a_I_m2 </th>
-   <th style="text-align:right;"> a_I_ha </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:left;"> t1 </td>
-   <td style="text-align:right;"> 3.30 </td>
-   <td style="text-align:right;"> 0.7 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.1 </td>
-   <td style="text-align:right;"> 1000 </td>
-   <td style="text-align:right;"> 5000 </td>
-   <td style="text-align:right;"> 0.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:left;"> t2 </td>
-   <td style="text-align:right;"> 4.80 </td>
-   <td style="text-align:right;"> 0.7 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.1 </td>
-   <td style="text-align:right;"> 1000 </td>
-   <td style="text-align:right;"> 5000 </td>
-   <td style="text-align:right;"> 0.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:left;"> t3 </td>
-   <td style="text-align:right;"> 4.08 </td>
-   <td style="text-align:right;"> 0.7 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.1 </td>
-   <td style="text-align:right;"> 1000 </td>
-   <td style="text-align:right;"> 5000 </td>
-   <td style="text-align:right;"> 0.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:left;"> t1 </td>
-   <td style="text-align:right;"> 1.50 </td>
-   <td style="text-align:right;"> 0.7 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.1 </td>
-   <td style="text-align:right;"> 1000 </td>
-   <td style="text-align:right;"> 5000 </td>
-   <td style="text-align:right;"> 0.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:left;"> t2 </td>
-   <td style="text-align:right;"> 1.68 </td>
-   <td style="text-align:right;"> 0.7 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.1 </td>
-   <td style="text-align:right;"> 1000 </td>
-   <td style="text-align:right;"> 5000 </td>
-   <td style="text-align:right;"> 0.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:left;"> t1 </td>
-   <td style="text-align:right;"> 1.38 </td>
-   <td style="text-align:right;"> 0.7 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.1 </td>
-   <td style="text-align:right;"> 1000 </td>
-   <td style="text-align:right;"> 5000 </td>
-   <td style="text-align:right;"> 0.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp2 </td>
-   <td style="text-align:left;"> t2 </td>
-   <td style="text-align:right;"> 3.24 </td>
-   <td style="text-align:right;"> 0.7 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.1 </td>
-   <td style="text-align:right;"> 1000 </td>
-   <td style="text-align:right;"> 5000 </td>
-   <td style="text-align:right;"> 0.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp3 </td>
-   <td style="text-align:left;"> t3 </td>
-   <td style="text-align:right;"> 3.72 </td>
-   <td style="text-align:right;"> 0.7 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.1 </td>
-   <td style="text-align:right;"> 1000 </td>
-   <td style="text-align:right;"> 5000 </td>
-   <td style="text-align:right;"> 0.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:left;"> t4 </td>
-   <td style="text-align:right;"> 2.94 </td>
-   <td style="text-align:right;"> 0.7 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.1 </td>
-   <td style="text-align:right;"> 1000 </td>
-   <td style="text-align:right;"> 5000 </td>
-   <td style="text-align:right;"> 0.5 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp5 </td>
-   <td style="text-align:left;"> t5 </td>
-   <td style="text-align:right;"> 3.36 </td>
-   <td style="text-align:right;"> 0.7 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.5 </td>
-   <td style="text-align:right;"> 0.1 </td>
-   <td style="text-align:right;"> 1000 </td>
-   <td style="text-align:right;"> 5000 </td>
-   <td style="text-align:right;"> 0.5 </td>
-  </tr>
-</tbody>
-</table>
+```
+# A tibble: 10 × 12
+# Groups:   stratum_i [2]
+   stratum_i plot_sp species_j tree_l volume bcef_r    cf     d  a_sp a_sp_m2
+   <fct>       <int> <fct>     <chr>   <dbl>  <dbl> <dbl> <dbl> <dbl>   <dbl>
+ 1 1               1 Sp1       t1       3.3     0.7   0.5   0.5   0.1    1000
+ 2 1               1 Sp1       t2       4.8     0.7   0.5   0.5   0.1    1000
+ 3 1               1 Sp1       t3       4.08    0.7   0.5   0.5   0.1    1000
+ 4 1               2 Sp4       t1       1.5     0.7   0.5   0.5   0.1    1000
+ 5 1               2 Sp4       t2       1.68    0.7   0.5   0.5   0.1    1000
+ 6 2               1 Sp1       t1       1.38    0.7   0.5   0.5   0.1    1000
+ 7 2               1 Sp2       t2       3.24    0.7   0.5   0.5   0.1    1000
+ 8 2               1 Sp3       t3       3.72    0.7   0.5   0.5   0.1    1000
+ 9 2               1 Sp4       t4       2.94    0.7   0.5   0.5   0.1    1000
+10 2               1 Sp5       t5       3.36    0.7   0.5   0.5   0.1    1000
+# ℹ 2 more variables: a_I_m2 <dbl>, a_I_ha <dbl>
+```
 
-`````
 
 :::
 :::
@@ -409,68 +230,23 @@ data.table::setDT(dataset_tidy)[, .(
   vji_sp_m3 = sum(volume)
   ),
   by = .(stratum_i, plot_sp, species_j)
-]  |> kbl() |> kable_styling()
+]  # |> kbl() |> kable_styling()
 ```
 
-::: {.cell-output-display}
+::: {.cell-output .cell-output-stdout}
 
-`````{=html}
-<table class="table" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> stratum_i </th>
-   <th style="text-align:right;"> plot_sp </th>
-   <th style="text-align:left;"> species_j </th>
-   <th style="text-align:right;"> vji_sp_m3 </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 12.18 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:right;"> 2 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:right;"> 3.18 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 1.38 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp2 </td>
-   <td style="text-align:right;"> 3.24 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp3 </td>
-   <td style="text-align:right;"> 3.72 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:right;"> 2.94 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:right;"> 1 </td>
-   <td style="text-align:left;"> Sp5 </td>
-   <td style="text-align:right;"> 3.36 </td>
-  </tr>
-</tbody>
-</table>
+```
+   stratum_i plot_sp species_j vji_sp_m3
+      <fctr>   <int>    <fctr>     <num>
+1:         1       1       Sp1     12.18
+2:         1       2       Sp4      3.18
+3:         2       1       Sp1      1.38
+4:         2       1       Sp2      3.24
+5:         2       1       Sp3      3.72
+6:         2       1       Sp4      2.94
+7:         2       1       Sp5      3.36
+```
 
-`````
 
 :::
 :::
@@ -500,86 +276,26 @@ data.table::setDT(dataset_tidy)[, .(
   vji_ha_m3
   ),
   by = .(stratum_i, species_j)
-]  |> kbl() |> kable_styling()
+]  # |> kbl() |> kable_styling()
 ```
 
-::: {.cell-output-display}
+::: {.cell-output .cell-output-stdout}
 
-`````{=html}
-<table class="table" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> stratum_i </th>
-   <th style="text-align:left;"> species_j </th>
-   <th style="text-align:right;"> vji_sp_m3 </th>
-   <th style="text-align:right;"> vji_ha_m3 </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 12.18 </td>
-   <td style="text-align:right;"> 121.8 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 12.18 </td>
-   <td style="text-align:right;"> 121.8 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 12.18 </td>
-   <td style="text-align:right;"> 121.8 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:right;"> 3.18 </td>
-   <td style="text-align:right;"> 31.8 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:right;"> 3.18 </td>
-   <td style="text-align:right;"> 31.8 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 1.38 </td>
-   <td style="text-align:right;"> 13.8 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp2 </td>
-   <td style="text-align:right;"> 3.24 </td>
-   <td style="text-align:right;"> 32.4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp3 </td>
-   <td style="text-align:right;"> 3.72 </td>
-   <td style="text-align:right;"> 37.2 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:right;"> 2.94 </td>
-   <td style="text-align:right;"> 29.4 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp5 </td>
-   <td style="text-align:right;"> 3.36 </td>
-   <td style="text-align:right;"> 33.6 </td>
-  </tr>
-</tbody>
-</table>
+```
+    stratum_i species_j vji_sp_m3 vji_ha_m3
+       <fctr>    <fctr>     <num>     <num>
+ 1:         1       Sp1     12.18     121.8
+ 2:         1       Sp1     12.18     121.8
+ 3:         1       Sp1     12.18     121.8
+ 4:         1       Sp4      3.18      31.8
+ 5:         1       Sp4      3.18      31.8
+ 6:         2       Sp1      1.38      13.8
+ 7:         2       Sp2      3.24      32.4
+ 8:         2       Sp3      3.72      37.2
+ 9:         2       Sp4      2.94      29.4
+10:         2       Sp5      3.36      33.6
+```
 
-`````
 
 :::
 :::
@@ -616,97 +332,26 @@ data.table::setDT(dataset_tidy)[, .(
   chb_ha_tC
   ),
   by = .(stratum_i, species_j)
-] |> kbl() |> kable_styling()
+] # |> kbl() |> kable_styling()
 ```
 
-::: {.cell-output-display}
+::: {.cell-output .cell-output-stdout}
 
-`````{=html}
-<table class="table" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> stratum_i </th>
-   <th style="text-align:left;"> species_j </th>
-   <th style="text-align:right;"> vji_sp_m3 </th>
-   <th style="text-align:right;"> vji_ha_m3 </th>
-   <th style="text-align:right;"> chb_ha_tC </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 12.18 </td>
-   <td style="text-align:right;"> 121.8 </td>
-   <td style="text-align:right;"> 42.63 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 12.18 </td>
-   <td style="text-align:right;"> 121.8 </td>
-   <td style="text-align:right;"> 42.63 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 12.18 </td>
-   <td style="text-align:right;"> 121.8 </td>
-   <td style="text-align:right;"> 42.63 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:right;"> 3.18 </td>
-   <td style="text-align:right;"> 31.8 </td>
-   <td style="text-align:right;"> 11.13 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:right;"> 3.18 </td>
-   <td style="text-align:right;"> 31.8 </td>
-   <td style="text-align:right;"> 11.13 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 1.38 </td>
-   <td style="text-align:right;"> 13.8 </td>
-   <td style="text-align:right;"> 4.83 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp2 </td>
-   <td style="text-align:right;"> 3.24 </td>
-   <td style="text-align:right;"> 32.4 </td>
-   <td style="text-align:right;"> 11.34 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp3 </td>
-   <td style="text-align:right;"> 3.72 </td>
-   <td style="text-align:right;"> 37.2 </td>
-   <td style="text-align:right;"> 13.02 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:right;"> 2.94 </td>
-   <td style="text-align:right;"> 29.4 </td>
-   <td style="text-align:right;"> 10.29 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp5 </td>
-   <td style="text-align:right;"> 3.36 </td>
-   <td style="text-align:right;"> 33.6 </td>
-   <td style="text-align:right;"> 11.76 </td>
-  </tr>
-</tbody>
-</table>
+```
+    stratum_i species_j vji_sp_m3 vji_ha_m3 chb_ha_tC
+       <fctr>    <fctr>     <num>     <num>     <num>
+ 1:         1       Sp1     12.18     121.8     42.63
+ 2:         1       Sp1     12.18     121.8     42.63
+ 3:         1       Sp1     12.18     121.8     42.63
+ 4:         1       Sp4      3.18      31.8     11.13
+ 5:         1       Sp4      3.18      31.8     11.13
+ 6:         2       Sp1      1.38      13.8      4.83
+ 7:         2       Sp2      3.24      32.4     11.34
+ 8:         2       Sp3      3.72      37.2     13.02
+ 9:         2       Sp4      2.94      29.4     10.29
+10:         2       Sp5      3.36      33.6     11.76
+```
 
-`````
 
 :::
 :::
@@ -737,108 +382,26 @@ data.table::setDT(dataset_tidy)[, .(
   cex_ha_tC
   ),
   by = .(stratum_i, species_j)
-] |> kbl() |> kable_styling()
+] # |> kbl() |> kable_styling()
 ```
 
-::: {.cell-output-display}
+::: {.cell-output .cell-output-stdout}
 
-`````{=html}
-<table class="table" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> stratum_i </th>
-   <th style="text-align:left;"> species_j </th>
-   <th style="text-align:right;"> vji_sp_m3 </th>
-   <th style="text-align:right;"> vji_ha_m3 </th>
-   <th style="text-align:right;"> chb_ha_tC </th>
-   <th style="text-align:right;"> cex_ha_tC </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 12.18 </td>
-   <td style="text-align:right;"> 121.8 </td>
-   <td style="text-align:right;"> 42.63 </td>
-   <td style="text-align:right;"> 30.45 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 12.18 </td>
-   <td style="text-align:right;"> 121.8 </td>
-   <td style="text-align:right;"> 42.63 </td>
-   <td style="text-align:right;"> 30.45 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 12.18 </td>
-   <td style="text-align:right;"> 121.8 </td>
-   <td style="text-align:right;"> 42.63 </td>
-   <td style="text-align:right;"> 30.45 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:right;"> 3.18 </td>
-   <td style="text-align:right;"> 31.8 </td>
-   <td style="text-align:right;"> 11.13 </td>
-   <td style="text-align:right;"> 7.95 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:right;"> 3.18 </td>
-   <td style="text-align:right;"> 31.8 </td>
-   <td style="text-align:right;"> 11.13 </td>
-   <td style="text-align:right;"> 7.95 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 1.38 </td>
-   <td style="text-align:right;"> 13.8 </td>
-   <td style="text-align:right;"> 4.83 </td>
-   <td style="text-align:right;"> 3.45 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp2 </td>
-   <td style="text-align:right;"> 3.24 </td>
-   <td style="text-align:right;"> 32.4 </td>
-   <td style="text-align:right;"> 11.34 </td>
-   <td style="text-align:right;"> 8.10 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp3 </td>
-   <td style="text-align:right;"> 3.72 </td>
-   <td style="text-align:right;"> 37.2 </td>
-   <td style="text-align:right;"> 13.02 </td>
-   <td style="text-align:right;"> 9.30 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:right;"> 2.94 </td>
-   <td style="text-align:right;"> 29.4 </td>
-   <td style="text-align:right;"> 10.29 </td>
-   <td style="text-align:right;"> 7.35 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp5 </td>
-   <td style="text-align:right;"> 3.36 </td>
-   <td style="text-align:right;"> 33.6 </td>
-   <td style="text-align:right;"> 11.76 </td>
-   <td style="text-align:right;"> 8.40 </td>
-  </tr>
-</tbody>
-</table>
+```
+    stratum_i species_j vji_sp_m3 vji_ha_m3 chb_ha_tC cex_ha_tC
+       <fctr>    <fctr>     <num>     <num>     <num>     <num>
+ 1:         1       Sp1     12.18     121.8     42.63     30.45
+ 2:         1       Sp1     12.18     121.8     42.63     30.45
+ 3:         1       Sp1     12.18     121.8     42.63     30.45
+ 4:         1       Sp4      3.18      31.8     11.13      7.95
+ 5:         1       Sp4      3.18      31.8     11.13      7.95
+ 6:         2       Sp1      1.38      13.8      4.83      3.45
+ 7:         2       Sp2      3.24      32.4     11.34      8.10
+ 8:         2       Sp3      3.72      37.2     13.02      9.30
+ 9:         2       Sp4      2.94      29.4     10.29      7.35
+10:         2       Sp5      3.36      33.6     11.76      8.40
+```
 
-`````
 
 :::
 :::
@@ -878,108 +441,26 @@ data.table::setDT(dataset_tidy)[, .(
   c_rsd
   ),
   by = .(stratum_i, species_j)
-] |> kbl() |> kable_styling()
+] # |> kbl() |> kable_styling()
 ```
 
-::: {.cell-output-display}
+::: {.cell-output .cell-output-stdout}
 
-`````{=html}
-<table class="table" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> stratum_i </th>
-   <th style="text-align:left;"> species_j </th>
-   <th style="text-align:right;"> vji_sp_m3 </th>
-   <th style="text-align:right;"> vji_ha_m3 </th>
-   <th style="text-align:right;"> chb_ha_tC </th>
-   <th style="text-align:right;"> c_rsd </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 12.18 </td>
-   <td style="text-align:right;"> 121.8 </td>
-   <td style="text-align:right;"> 42.63 </td>
-   <td style="text-align:right;"> 52.983 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 12.18 </td>
-   <td style="text-align:right;"> 121.8 </td>
-   <td style="text-align:right;"> 42.63 </td>
-   <td style="text-align:right;"> 52.983 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 12.18 </td>
-   <td style="text-align:right;"> 121.8 </td>
-   <td style="text-align:right;"> 42.63 </td>
-   <td style="text-align:right;"> 52.983 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:right;"> 3.18 </td>
-   <td style="text-align:right;"> 31.8 </td>
-   <td style="text-align:right;"> 11.13 </td>
-   <td style="text-align:right;"> 13.833 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 1 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:right;"> 3.18 </td>
-   <td style="text-align:right;"> 31.8 </td>
-   <td style="text-align:right;"> 11.13 </td>
-   <td style="text-align:right;"> 13.833 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp1 </td>
-   <td style="text-align:right;"> 1.38 </td>
-   <td style="text-align:right;"> 13.8 </td>
-   <td style="text-align:right;"> 4.83 </td>
-   <td style="text-align:right;"> 6.003 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp2 </td>
-   <td style="text-align:right;"> 3.24 </td>
-   <td style="text-align:right;"> 32.4 </td>
-   <td style="text-align:right;"> 11.34 </td>
-   <td style="text-align:right;"> 14.094 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp3 </td>
-   <td style="text-align:right;"> 3.72 </td>
-   <td style="text-align:right;"> 37.2 </td>
-   <td style="text-align:right;"> 13.02 </td>
-   <td style="text-align:right;"> 16.182 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp4 </td>
-   <td style="text-align:right;"> 2.94 </td>
-   <td style="text-align:right;"> 29.4 </td>
-   <td style="text-align:right;"> 10.29 </td>
-   <td style="text-align:right;"> 12.789 </td>
-  </tr>
-  <tr>
-   <td style="text-align:left;"> 2 </td>
-   <td style="text-align:left;"> Sp5 </td>
-   <td style="text-align:right;"> 3.36 </td>
-   <td style="text-align:right;"> 33.6 </td>
-   <td style="text-align:right;"> 11.76 </td>
-   <td style="text-align:right;"> 14.616 </td>
-  </tr>
-</tbody>
-</table>
+```
+    stratum_i species_j vji_sp_m3 vji_ha_m3 chb_ha_tC  c_rsd
+       <fctr>    <fctr>     <num>     <num>     <num>  <num>
+ 1:         1       Sp1     12.18     121.8     42.63 52.983
+ 2:         1       Sp1     12.18     121.8     42.63 52.983
+ 3:         1       Sp1     12.18     121.8     42.63 52.983
+ 4:         1       Sp4      3.18      31.8     11.13 13.833
+ 5:         1       Sp4      3.18      31.8     11.13 13.833
+ 6:         2       Sp1      1.38      13.8      4.83  6.003
+ 7:         2       Sp2      3.24      32.4     11.34 14.094
+ 8:         2       Sp3      3.72      37.2     13.02 16.182
+ 9:         2       Sp4      2.94      29.4     10.29 12.789
+10:         2       Sp5      3.36      33.6     11.76 14.616
+```
 
-`````
 
 :::
 :::
