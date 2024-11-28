@@ -1,27 +1,5 @@
 # [**VM0010**](https://verra.org/wp-content/uploads/2024/10/VM0010_IFM_LtPF_v1.4_Clean_10282024.pdf) Starter Script
 
-::: {.cell}
-<style type="text/css">
-div.column {
-    display: inline-block;
-    vertical-align: top;
-    width: 50%;
-}
-
-#TOC::before {
-  content: "";
-  display: block;
-  height:200px;
-  width: 200px;
-  background-size: contain;
-  background-position: 50% 50%;
-  padding-top: 80px !important;
-  background-repeat: no-repeat;
-}
-</style>
-:::
-
-
 
 # 1. Process data
 
