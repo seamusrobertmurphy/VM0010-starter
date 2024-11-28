@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 60
----
-
 # [**VM0010**](https://verra.org/wp-content/uploads/2024/10/VM0010_IFM_LtPF_v1.4_Clean_10282024.pdf) Starter Script
 
 -   [1. Process data](#1-process-data)
