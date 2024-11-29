@@ -7,9 +7,6 @@ author:
     email: seamusrobertmurphy@gmail.com
     degrees:
       - PhD
-      - MSc
-      - MA
-      - BA
 abstract: > 
   The following workflow provides a starter script for quantifying 
   greenhouse gas emissions reduction of projects designed under the
@@ -31,6 +28,7 @@ highlight-style: github
 bibliography: ./R/references.bib
 df-print: kable
 prefer-html: true
+output-dir: docs
 ---
 
 ```{r setup}
