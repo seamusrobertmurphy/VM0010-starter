@@ -78,9 +78,7 @@ div.column {
 }
 ```
 
-# 1. Process data
-
-The following workflow provides a starter script for quantifying greenhouse gas emissions reduction of projects designed under the VCS Methodology [VM0010](https://verra.org/wp-content/uploads/2024/10/VM0010_IFM_LtPF_v1.4_Clean_10282024.pdf).
+# 1. Preprocess data
 
 #### Import dummy data {#sec-1.1}
 
